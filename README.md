@@ -1,7 +1,8 @@
 # Algèbre de Boole et tableau de Karnaugh : cours et exercices corrigés
 
-Code de la vidéo de la chaîne [IT Skills Maker](https://www.youtube.com/@ItSkillsMaker) (lien de la vidéo ajouté à la
-publication).
+Code de la vidéo [Algèbre de Boole et tableau de Karnaugh : cours et exercices corrigés](https://youtu.be/w9IeWZVF9vY)
+de la chaîne [IT Skills Maker](https://www.youtube.com/@ItSkillsMaker) (playlist
+[Architecture des ordinateurs](https://www.youtube.com/playlist?list=PLSxTICMRmwK8)).
 
 Python pur, sans aucune bibliothèque à installer (Python 3.11 ou plus récent). Tout est exécuté, et les sorties réelles
 sont dans [`preuves/`](preuves/).
