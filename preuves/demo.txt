@@ -1,0 +1,98 @@
+Python 3.15.1
+
+--- Accroche : quatre produits de quatre lettres, et une seule porte NOR
+F = A'B'C'D' + A'B'CD' + AB'C'D' + AB'CD'
+portes : 9 (4 NON, 4 ET, 1 OU)
+forme minimale : B'D'  (3 portes)
+F = NON(B OU D), une porte NOR         vrai sur les 16 lignes
+
+--- Table de verite de F = AB + C'
+A B C | F
+0 0 0 | 1
+0 0 1 | 0
+0 1 0 | 1
+0 1 1 | 0
+1 0 0 | 1
+1 0 1 | 0
+1 1 0 | 1
+1 1 1 | 1
+
+--- Les lois, verifiees sur toutes les lignes
+A + A'      = 1 (complement)           vrai sur les 4 lignes
+A . A'      = 0                        vrai sur les 4 lignes
+A + AB      = A (absorption)           vrai sur les 4 lignes
+A(A + B)    = A (absorption)           vrai sur les 4 lignes
+A + A'B     = A + B                    vrai sur les 4 lignes
+(A + B)'    = A'B' (De Morgan)         vrai sur les 4 lignes
+(AB)'       = A' + B' (De Morgan)      vrai sur les 4 lignes
+(A + B)'    = A' + B' (l'erreur)       FAUX : 2 ligne(s) sur 4 different (AB = 01, 10)
+A + BC      = (A + B)(A + C)           vrai sur les 8 lignes
+
+--- Ex 1 : simplifier F = AB + ABC + A'B
+AB + ABC = AB (absorption)             vrai sur les 8 lignes
+AB + A'B = B (B(A + A') = B)           vrai sur les 8 lignes
+F = B                                  vrai sur les 8 lignes
+
+--- Ex 2 : complementer F = AB + C' avec De Morgan
+F' = (A' + B')C                        vrai sur les 8 lignes
+F' = A'C + B'C                         vrai sur les 8 lignes
+F' = A'B' + C (l'erreur)               FAUX : 2 ligne(s) sur 8 different (ABC = 000, 111)
+
+--- Ex 3 : le vote a la majorite (3 juges A, B, C) : de la table a l'expression
+A B C | F
+0 0 0 | 0   (ligne 0)
+0 0 1 | 0   (ligne 1)
+0 1 0 | 0   (ligne 2)
+0 1 1 | 1   (ligne 3)
+1 0 0 | 0   (ligne 4)
+1 0 1 | 1   (ligne 5)
+1 1 0 | 1   (ligne 6)
+1 1 1 | 1   (ligne 7)
+F = Somme m(3, 5, 6, 7) = A'BC + AB'C + ABC' + ABC  (8 portes)
+  A \ BC | 00  01  11  10
+       0 |  0   0   1   0
+       1 |  0   1   1   1
+forme minimale : AB + AC + BC  (4 portes)
+le programme trouve : ['AB + AC + BC']
+F = AB + AC + BC                       vrai sur les 8 lignes
+
+--- Ex 4 : Karnaugh a 4 variables, F = Somme m(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)
+ AB \ CD | 00  01  11  10
+      00 |  1   1   0   1
+      01 |  1   1   0   1
+      11 |  1   1   0   1
+      10 |  1   1   0   0
+forme canonique : 11 termes, 44 lettres, 16 portes
+forme minimale  : C' + A'D' + BD'  (6 portes)
+le programme trouve : ["C' + A'D' + BD'"]
+F = C' + A'D' + BD'                    vrai sur les 16 lignes
+
+--- Ex 4 bis : les quatre coins, F = Somme m(0, 2, 8, 10)
+ AB \ CD | 00  01  11  10
+      00 |  1   0   0   1
+      01 |  0   0   0   0
+      11 |  0   0   0   0
+      10 |  1   0   0   1
+le programme trouve : ["B'D'"]
+
+--- Ex 5 : les cas indifferents. Chiffre BCD (0 a 9) >= 5 ; 10 a 15 n'existent pas (X)
+ AB \ CD | 00  01  11  10
+      00 |  0   0   0   0
+      01 |  0   1   1   1
+      11 |  X   X   X   X
+      10 |  1   1   X   X
+sans les X : ["A'BC + A'BD + AB'C'"]
+avec les X : ['A + BC + BD']
+A + BC + BD (les 6 X ignores)          vrai sur les 10 lignes
+
+--- Ex 6 : deux corriges differents, tous les deux justes. F = Somme m(0, 1, 2, 5, 6, 7)
+  A \ BC | 00  01  11  10
+       0 |  1   1   0   1
+       1 |  0   1   1   1
+minimale : A'B' + AC + BC'  -> JUSTE et MINIMALE
+minimale : A'C' + AB + B'C  -> JUSTE et MINIMALE
+
+--- Ex 7 : trouver l'erreur. Trois copies pour F = Somme m(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)
+copie 1 : F = C' + A'CD' + BCD'    -> JUSTE mais PAS MINIMALE : 3 termes et 7 lettres, contre 3 termes et 5 lettres pour C' + A'D' + BD'
+copie 2 : F = C' + D'              -> FAUSSE : differente sur 1 ligne(s) de la table (1010)
+copie 3 : F = C' + A'D' + BD'      -> JUSTE et MINIMALE

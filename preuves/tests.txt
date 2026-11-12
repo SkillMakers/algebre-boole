@@ -1,0 +1,48 @@
+Python 3.15.1 - python -m unittest -v
+test_apostrophe_sans_lettre_refusee (test_boole.TestCopiesMalEcrites.test_apostrophe_sans_lettre_refusee)
+Une apostrophe sans lettre devant n'est pas lue en silence. ... ok
+test_deux_apostrophes_s_annulent (test_boole.TestCopiesMalEcrites.test_deux_apostrophes_s_annulent)
+A'' = A. ... ok
+test_indifferents_donnes_par_un_generateur (test_boole.TestCopiesMalEcrites.test_indifferents_donnes_par_un_generateur)
+Les X passes en generateur ne sont pas perdus en route. ... ok
+test_minterme_hors_table_refuse (test_boole.TestCopiesMalEcrites.test_minterme_hors_table_refuse)
+La ligne 9 n'existe pas avec 3 variables (8 lignes). ... ok
+test_un_plus_en_trop_est_illisible (test_boole.TestCopiesMalEcrites.test_un_plus_en_trop_est_illisible)
+« A + » n'est pas « A + 1 » : la copie est rendue illisible. ... ok
+test_une_lettre_inconnue_est_illisible (test_boole.TestCopiesMalEcrites.test_une_lettre_inconnue_est_illisible)
+Une variable hors de la table, ou une minuscule, ne fait pas planter le correcteur. ... ok
+test_accroche_quatre_produits_egalent_une_porte_nor (test_boole.TestExercices.test_accroche_quatre_produits_egalent_une_porte_nor)
+A'B'C'D' + A'B'CD' + AB'C'D' + AB'CD' = B'D' = NON(B OU D) ; 9 portes contre 3 en deux niveaux. ... ok
+test_ex1_simplification_algebrique (test_boole.TestExercices.test_ex1_simplification_algebrique)
+AB + ABC + A'B = B. ... ok
+test_ex2_complement_par_de_morgan (test_boole.TestExercices.test_ex2_complement_par_de_morgan)
+(AB + C')' = A'C + B'C, et pas A'B' + C (fausse sur 000 et 111). ... ok
+test_ex3_majorite (test_boole.TestExercices.test_ex3_majorite)
+Vote a 3 : Somme m(3, 5, 6, 7) = AB + AC + BC ; 8 portes en canonique, 4 en minimale. ... ok
+test_ex4_karnaugh_quatre_variables_et_quatre_coins (test_boole.TestExercices.test_ex4_karnaugh_quatre_variables_et_quatre_coins)
+Somme m(0,1,2,4,5,6,8,9,12,13,14) = C' + A'D' + BD' ; Somme m(0,2,8,10) = B'D' (les 4 coins). ... ok
+test_ex5_les_cas_indifferents_raccourcissent (test_boole.TestExercices.test_ex5_les_cas_indifferents_raccourcissent)
+Chiffre BCD >= 5 : 9 lettres sans les X, 5 avec (A + BC + BD). ... ok
+test_ex6_deux_formes_minimales (test_boole.TestExercices.test_ex6_deux_formes_minimales)
+Somme m(0, 1, 2, 5, 6, 7) a deux corriges minimaux, tous deux justes. ... ok
+test_ex7_les_trois_copies (test_boole.TestExercices.test_ex7_les_trois_copies)
+Copie 1 : bord oublie, juste mais pas minimale. Copie 2 : couvre la case 1010, fausse. ... ok
+test_lecture_d_une_somme_de_produits (test_boole.TestLecture.test_lecture_d_une_somme_de_produits)
+L'apostrophe nie la lettre qui la precede. ... ok
+test_minterme_numero_de_la_ligne (test_boole.TestLecture.test_minterme_numero_de_la_ligne)
+A=1, B=0, C=1 est la ligne 101, soit 5 : AB'C est le minterme m5. ... ok
+test_de_morgan_et_absorption_vraies_sur_toutes_les_lignes (test_boole.TestLois.test_de_morgan_et_absorption_vraies_sur_toutes_les_lignes)
+(A + B)' = A'B', (AB)' = A' + B', A + AB = A, A + A'B = A + B, A + BC = (A + B)(A + C). ... ok
+test_l_erreur_classique_de_de_morgan_est_fausse_sur_deux_lignes (test_boole.TestLois.test_l_erreur_classique_de_de_morgan_est_fausse_sur_deux_lignes)
+(A + B)' n'est pas A' + B' : elles different pour A,B = 01 et 10. ... ok
+test_formes_minimales_justes_sur_toutes_les_fonctions_a_3_variables (test_boole.TestOutils.test_formes_minimales_justes_sur_toutes_les_fonctions_a_3_variables)
+Les 256 fonctions de 3 variables : la forme minimale trouvee est toujours egale a la fonction. ... ok
+test_implicants_premiers_du_vote (test_boole.TestOutils.test_implicants_premiers_du_vote)
+Majorite : trois groupes de deux cases, et aucun plus grand. ... ok
+test_karnaugh_suit_l_ordre_de_gray (test_boole.TestOutils.test_karnaugh_suit_l_ordre_de_gray)
+Colonnes 00, 01, 11, 10 : la case m3 (011) est en 3e colonne, m2 (010) en 4e. ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.122s
+
+OK
